@@ -1,0 +1,58 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location-Based Access</title>
+    <script>
+        function getLocation() {
+            var location = prompt("Please enter your location (Punjab, Haryana, Chandigarh):");
+            checkLocation(location);
+        }
+
+        function checkLocation(location) {
+            var allowedLocations = ["punjab", "haryana", "chandigarh"];
+            if (allowedLocations.includes(location.toLowerCase())) {
+                var username = prompt("Enter your username:");
+                var password = prompt("Enter your password:");
+                checkCredentials(location, username, password);
+            } else {
+                alert("Access Denied");
+            }
+        }
+
+        function checkCredentials(location, username, password) {
+            var validUsername = "aavi";
+            var validPassword = "pass";  
+
+            if (username === validUsername && password === validPassword) {
+                showMap(location);
+            } else {
+                alert("Invalid username or password");
+            }
+        }
+
+        function showMap(location) {
+            var mapUrl = "";
+            switch (location.toLowerCase()) {
+                case "punjab":
+                    mapUrl = "https://www.google.com/maps/place/Punjab"; 
+                    break;
+                case "haryana":
+                    mapUrl = "https://www.google.com/maps/place/Haryana"; 
+                case "chandigarh":
+                    mapUrl = "https://www.google.com/maps/place/Chandigarh"; 
+                    break;
+            }
+            window.location.href = mapUrl;
+        }
+
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+    <h1>Welcome to Our Service</h1>
+</body>
+</html>
